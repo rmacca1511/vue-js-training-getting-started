@@ -29,6 +29,7 @@ $(document).ready(function () {
             grandfatherClass: 'grandfather-class',
             parentClass: 'parent-class',
             query: '',
+            queryKeyed: '',
             queryPrevent: '',
             querySearchOnce: '',
             isRunning: false,
@@ -71,20 +72,19 @@ $(document).ready(function () {
             executeSearchOnce: function() {
                 this.isRunning = true;
                 document.forms[0].submit();
+            },
+            executeSearchKeyed: function(t, e) {
+                var msg = 'Running Keyed Event - Runs on Enter-----> Token: ' + t +
+                ' Query: ' + this.query +
+                ' Button: ' + event.target.innerText;
+                alert(msg);
+            },
+            evaluateKey: function() {
+                console.log('Evaluating Key');
             }
         }
     });
 
 
-    function checkForEnter(e) {
-        var c = e.keyCode ? e.keyCode:e.which;
-        if (c == 13) {
-            growler.executeSearch();
-            return false;
-        }
-
-        return true;
-    }
-    
 });
 
