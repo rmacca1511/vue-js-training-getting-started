@@ -10,115 +10,164 @@
     </head>
     <body>
         <div id="growler">
-            <h2 v-html="appName" v-bind:class="{
-                'headers': true,
-                'accent-color': isOnline
-            }
-            " 
-            v-bind:style="{ color:isOnline? '#FF6A00' : '#000' }"></h2>
-            <img 
-                alt="Growler"
-                v-bind:src="appLogo"
-                style="height:36px;"
-            />
-
-            <input v-model.trim="query" placeholder="Search...">
-
-            <!-- Event Capturing Examples -->
-
-            <!-- remember, bubbling up, capturing down, so capture means event in grandparent runs first, top to bottom-->
-            <div v-on:click.capture="grandparentClick"></div>
-                <div v-on:click.capture="parentClick">
-                    <button type="button" v-on:click.capture="executeSearch('token', $event)">Search</button>
+            <div class="container">
+                <!-- Logo -->
+                <div class="image-container">
+                    <img 
+                        alt="Growler"
+                        v-bind:src="appLogo"
+                        style="height:150px;margin: 0 auto;"
+                    />
                 </div>
+
+
+                <h2 v-html="appName" v-bind:class="{
+                    'headers': true,
+                    'accent-color': isOnline
+                }
+                " 
+                v-bind:style="{ color:isOnline? '#FF6A00' : '#000' }"></h2>
+
+                <!-- Input Field Binding with Trim -->
+
+                <h3 v-html="sectionNameInput" v-bind:class="sectionHeader"></h3>
+
+                <input v-model.trim="query" v-bind:class="inputClasses" placeholder="Search...">
+                <div v-bind:class="textClasses">Searching for: {{ query }}</div> 
+
+                <!-- Event Capturing Examples -->
+
+                <h3 v-html="sectionNameEventCapture" v-bind:class="sectionHeader"></h3>
+
+                <!-- remember, bubbling up, capturing down, so capture means event in grandparent runs first, top to bottom-->
+                <div v-on:click.capture="grandparentClick" v-bind:class="grandfatherClass">
+                    <div v-on:click.capture="parentClick" v-bind:class="parentClass">
+                        <button type="button" v-on:click.capture="executeSearchCapture('token', $event)" v-bind:class="inputButton">Search</button>
+                    </div>
+                </div>
+
+                <!-- Prevent Modifier (validation for empty query) -->
+
+                <h3 v-html="sectionNamePrevent" v-bind:class="sectionHeader"></h3>
+
+                <form action="#" method="GET">
+                    <input type="text" v-model="queryPrevent" v-bind:class="inputClasses" />
+                    <button type="submit" v-on:click.prevent="executeSearchPrevent" v-bind:class="textClasses">Search</button>
+                </form>
+
+                <!-- Stop Modifier Examples -->
+
+                <h3 v-html="sectionNameStop" v-bind:class="sectionHeader"></h3>
+
+                <!-- remember, bubbling up, so by default click events go from button to grandfather (bottom to top) the stop in parentClick will mean grandparentClick wont fire -->
+                <div v-on:click="grandparentClick" v-bind:class="grandfatherClass">
+                    <div v-on:click.stop="parentClick" v-bind:class="parentClass">
+                        <button type="button" v-on:click="executeSearchCapture" v-bind:class="inputButton">Search</button>
+                    </div>
+                </div>
+
+
+                <!-- Self Modifier Examples -->
+
+                <h3 v-html="sectionNameSelf" v-bind:class="sectionHeader"></h3>
+
+                <!-- Ignores event propogation for simplication -->
+
+                <!-- So parentClick has self so will not run but firing will continue up the tree -->
+                <div v-on:click="grandparentClick" v-bind:class="grandfatherClass">
+                    <div v-on:click.self="parentClick" v-bind:class="parentClass">
+                        <button type="button" v-on:click="executeSearchCapture" v-bind:class="inputButton">Search</button>
+                    </div>
+                </div>
+
+                <!-- Textarea Binding -->
+
+                <h3 v-html="sectionNameTextarea" v-bind:class="sectionHeader"></h3>
+                <textarea v-model="emailMessage" name="" id="" cols="30" rows="10"></textarea>
+
+                <!-- Checkbox -->
+
+                <h3 v-html="sectionNameCheckbox" v-bind:class="sectionHeader"></h3>
+                <label for="">
+                    Is Power Syntax Enabled?
+                </label>
+                <input type="checkbox" v-model="isPowerSyntaxEnabled" v-bind:class="inputCheckbox">
+                <hr />
+                <label for="">
+                    <input type="checkbox" value="beers" v-model="searchIndexes" v-bind:class="inputCheckbox">
+                    Beers
+                </label>
+                <label for="">
+                    <input type="checkbox" value="breweries" v-model="searchIndexes" v-bind:class="inputCheckbox">
+                    Breweries
+                </label>
+                <br />
+
+                <div v-bind:class="textClasses">selected: {{ searchIndexes }}</div>
+
+                <!-- Radios -->
+                <h3 v-html="sectionNameRadio" v-bind:class="sectionHeader"></h3>
+
+                <label for="">
+                    <input type="radio" value="beers" v-model="searchIndex" v-bind:class="inputRadio">
+                    Beers
+                </label>
+                <label for="">
+                    <input type="radio" value="breweries" v-model="searchIndex"  v-bind:class="inputRadio">
+                    Breweries
+                </label>
+                <div v-bind:class="textClasses">selected: {{ searchIndex }}</div>
+
+                <!-- Dropdown List -->
+                
+                <h3 v-html="sectionNameDropdown" v-bind:class="sectionHeader"></h3>
+
+                <select v-model="selectedSearchIndex" v-bind:class="inputSelect">
+                    <option value="beers">Beers</option>
+                    <option value="breweries">Breweries</option>
+                    <option value="distilleries">Distilleries</option>
+                    <option value="pubs">Pubs</option>
+                </select>
+
+                <div v-bind:class="textClasses">selected: {{ selectedSearchIndex }}</div>
+
+                <!-- Dropdown List Multiple -->
+                <select multiple v-model="selectedSearchIndexes" v-bind:class="inputSelectMultiple">
+                    <option value="beers">Beers</option>
+                    <option value="breweries">Breweries</option>
+                    <option value="distilleries">Distilleries</option>
+                    <option value="pubs">Pubs</option>
+                </select>
+
+                <div v-bind:class="textClasses">selected: {{ selectedSearchIndexes }}</div>
+
+                <!-- Number input -->
+                <h3 v-html="sectionNameNumber" v-bind:class="sectionHeader"></h3>
+                <input v-model.number="result" placeholder="2+3=" v-bind:class="inputClasses">
+
+                <!-- Lazy Binding -->
+                <h3 v-html="sectionNameLazy" v-bind:class="sectionHeader"></h3>
+                <input v-model.lazy="query" placeholder="Search..." v-bind:class="inputClasses">
+
+                <!-- Once Modifier -->
+                <h3 v-html="sectionNameOnce" v-bind:class="sectionHeader"></h3>
+                <form action="someUrl" method="POST">
+                    <input type="search" v-model="querySearchOnce" v-bind:disabled="isRunning" v-bind:class="inputClasses" />
+                    <button type="button" v-on:click.once="executeSearchOnce" v-bind:disabled="isRunning" v-bind:class="textClasses">Search</button>
+                </form>
+
+                <hr /> 
+
+                <!-- Keyed Bindings -->
+                <h3 v-html="sectionNameKeyed" v-bind:class="sectionHeader"></h3>
+
+                <form onkeypress="return event.keyCode != 13;">
+                    <input type="search" v-model="query" />
+                    <button type="button" v-on:click.once="executeSearch">Search</button>
+                </form>
+                
             </div>
 
-            <!-- Prevent Modifier (validation for empty query) -->
-            <form action="#" method="GET">
-                <input type="text" v-model="queryPrevent" id="query" name="query" />
-                <button type="submit" v-on:click.prevent="executeSearchPrevent">Search</button>
-            </form>
-
-            <!-- Stop Modifier Examples -->
-
-            <!-- remember, bubbling up, so by default click events go from button to grandfather (bottom to top) the stop in parentClick will mean grandparentClick wont fire -->
-            <div v-on:click="grandparentClick"></div>
-                <div v-on:click.stop="parentClick">
-                    <button type="button" v-on:click="executeSearch">Search</button>
-                </div>
-            </div>
-
-
-            <!-- Self Modifier Examples -->
-
-            <!-- Ignores event propogation for simplication -->
-            <!-- So parentClick has self so will not run but firing will continue up the tree -->
-            <div v-on:click="grandparentClick"></div>
-                <div v-on:click.self="parentClick">
-                    <button type="button" v-on:click="executeSearch">Search</button>
-                </div>
-            </div>
-
-
-            <br />
-
-            <div>Searching for: {{ query }}</div> 
-
-            <textarea v-model="emailMessage" name="" id="" cols="30" rows="10"></textarea>
-
-            <input type="checkbox" v-model="isPowerSyntaxEnabled">
-
-            <!-- Checkbox -->
-            <label for="">
-                <input type="checkbox" value="beers" v-model="searchIndexes">
-                Beers
-            </label>
-            <label for="">
-                <input type="checkbox" value="breweries" v-model="searchIndexes">
-                Breweries
-            </label>
-            <small>selected: {{ searchIndexes }}</small>
-
-            <!-- Radios -->
-            <label for="">
-                <input type="radio" value="beers" v-model="searchIndex">
-                Beers
-            </label>
-            <label for="">
-                <input type="radio" value="breweries" v-model="searchIndex">
-                Breweries
-            </label>
-            <small>selected: {{ searchIndex }}</small>
-
-            <!-- Dropdown List -->
-
-            <select v-model="selectedSearchIndex">
-                <option value="beers">Beers</option>
-                <option value="breweries">Breweries</option>
-                <option value="distilleries">Distilleries</option>
-                <option value="pubs">Pubs</option>
-            </select>
-
-            <small>selected: {{ selectedSearchIndex }} </small>
-
-            <!-- Dropdown List Multiple -->
-
-            <select multiple v-model="selectedSearchIndexes">
-                <option value="beers">Beers</option>
-                <option value="breweries">Breweries</option>
-                <option value="distilleries">Distilleries</option>
-                <option value="pubs">Pubs</option>
-            </select>
-
-            <small>selected: {{ selectedSearchIndexes }} </small>
-
-            <!-- Number input -->
-
-            <input v-model.number="result" placeholder="2+3=">
-
-            <!-- Lazy Binding -->
-
-            <input v-model.lazy="query" placeholder="Search...">
 
         </div>
         <script
