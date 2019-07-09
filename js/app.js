@@ -4,6 +4,7 @@ $(document).ready(function () {
         el: '#growler',
         data: {
             appName: '<a href="./">Growler</a>',
+            
             sectionNameCheckbox: 'Checkbox Binding',
             sectionNameDropdown: 'Dropdown List Binding',
             sectionNameEventCapture: 'Event Capture Binding (Top to Bottom)',
@@ -17,6 +18,7 @@ $(document).ready(function () {
             sectionNameNumber: 'Number Binding',
             sectionNameLazy: 'Lazy Binding',
             sectionNameOnce: 'Once Binding',
+            sectionNameMouse: 'Mouse Binding',
 
             appLogo: '../img/logo.png',
             accentColor: 'accent-color',
@@ -48,7 +50,9 @@ $(document).ready(function () {
             selectedSearchIndex: 'beers',
             selectedSearchIndexes: ['beers', 'pubs'],
             result: 2+3,
-            textClasses: 'output-field'
+            textClasses: 'output-field',
+            top: '200px',
+            left: '200px'
         },
         methods: {
             grandparentClick: function() {
@@ -82,10 +86,33 @@ $(document).ready(function () {
             },
             evaluateKey: function() {
                 console.log('Evaluating Key');
+            },
+            onBlockClick: function(e) {
+                if (e.button === 2) {
+                    this.showContextMenu = true;
+                    this.top = e.y + 'px';
+                    this.left = e.x + 'px';
+                }
+            },
+            showContextMenu: function() {
+                this.showContextMenu = true;
+            },
+            closeContextMenu: function() {
+                this.showContextMenu = false;
+            },
+            onCopyClick: function() {
+                alert('copy something');
+                this.closeContextMenu();
+            },
+            onPasteClick: function() {
+                alert('paste something');
+                this.closeContextMenu();
             }
         }
     });
+
     console.log(Vue.config);
+
     Vue.config.keyCodes = {
         f1: 112
     };

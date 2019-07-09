@@ -167,6 +167,22 @@
                 </form>
                 <div v-bind:class="textClasses">Searching for: {{ queryKeyed }}</div> 
 
+                <!-- Mouse Button Events -->
+                <h3 v-html="sectionNameMouse" v-bind:class="sectionHeader"></h3>
+
+                <div v-on:contextmenu.prevent="onBlockClick">
+                    Click in this area with the right mouse button.
+                </div>
+
+                <ul id="myContextMenu" v-if="showContextMenu" v-on:blur="closeContextMenu" v-bind:style="{top: top, left: left}">
+                    <li>
+                        <a href="#" v-on:click="onCopyClick">Copy</a>
+                    </li>
+                    <li>
+                        <a href="#" v-on:click="onPasteClick">Paste</a>
+                    </li>
+                </ul>
+
             </div>
 
 
