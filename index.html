@@ -7,7 +7,12 @@
     </head>
     <body>
         <div id="growler">
-            <h2 v-html="appName"></h2>
+            <h2 v-text="appName" v-bind:style="appStyle"></h2>
+            <img 
+                alt="Growler"
+                v-bind:src="appLogo"
+                style="height:36px;"
+            />
         </div>
         <script
             type="text/javascript"
