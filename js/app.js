@@ -71,16 +71,22 @@ $(document).ready(function () {
 
             beers: [
                 {name: 'Pope Lick Porter', price: 2.80},
-                {name: 'Ahool Ale', price: 2.38},
                 {name: 'Hyote Chocolate Stout', price: 2.12},
+                {name: 'Ahool Ale', price: 2.38},
                 {name: 'Tikibalang Barley Wine', price: 2.54}
             ],
-            shoppingCart: [],
+            shoppingCart: {
+                items: [],
+                subTotal: 0.00
+            },
             subTotal: 0.00
         },
         watch: {
-            shoppingCart: function() {
-                this.updateSubTotal();
+            shoppingCart: {
+                handler: function(latest, original) {
+                    this.updateSubTotal()
+                },
+                deep: true
             }
         },
         methods: {
@@ -152,7 +158,7 @@ $(document).ready(function () {
 
     });
     
-    Vue.set(growler.beers, 2, 'Ahool Pale Ale');
+    Vue.set(growler.beers, 2, {name: 'Ahool Pale Ale', price: 2.38});
 
     Vue.config.keyCodes = {
         f1: 112
