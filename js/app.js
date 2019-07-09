@@ -21,6 +21,8 @@ $(document).ready(function () {
             sectionNameOnce: 'Once Binding',
             sectionNameMouse: 'Mouse Binding',
             sectionNameSpecial: 'Special Keys Binding',
+            sectionNameTraversing: 'Traversing through object properties',
+
             appLogo: '../img/logo.png',
             accentColor: 'accent-color',
             isOnline: false,
@@ -54,7 +56,17 @@ $(document).ready(function () {
             result: 2+3,
             textClasses: 'output-field',
             top: '200px',
-            left: '200px'
+            left: '200px',
+
+            currentUser: {
+                firstName: 'Ryan',
+                fingers: 10,
+                tags: ['male', 'scorpio'],
+                socialMedia: {
+                    twitter: '@RyanMackenzie92',
+                    youtube: 'RyanMac'
+                }
+            }
         },
         methods: {
             grandparentClick: function() {

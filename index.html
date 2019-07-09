@@ -206,6 +206,15 @@
                     </li>
                 </ul>
 
+                <!-- Traversing Object Properties -->
+
+                <h3 v-html="sectionNameTraversing" v-bind:class="sectionHeader"></h3>
+                <ul>
+                    <li v-for="(v, k, i) in currentUser">
+                        {{ i }}: {{ k }} - {{ v }}
+                    </li>
+                </ul>
+
             </div>
         </div>
         <script
