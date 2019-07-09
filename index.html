@@ -42,6 +42,17 @@
             </label>
             <small>selected: {{ searchIndexes }}</small>
 
+            <!-- Radios -->
+            <label for="">
+                <input type="radio" value="beers" v-model="searchIndex">
+                Beers
+            </label>
+            <label for="">
+                <input type="radio" value="breweries" v-model="searchIndex">
+                Breweries
+            </label>
+            <small>selected: {{ searchIndex }}</small>
+
         </div>
         <script
             type="text/javascript"

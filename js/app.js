@@ -15,7 +15,8 @@ $(document).ready(function () {
             query: '',
             emailMessage: '',
             isPowerSyntaxEnabled: false,
-            searchIndexes: []
+            searchIndexes: [],
+            searchIndex: 'beers'
         }
     });
 });
