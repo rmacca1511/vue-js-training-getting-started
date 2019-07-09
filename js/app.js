@@ -3,12 +3,14 @@ $(document).ready(function () {
 
     // Advantage of computer properties - Caching so good for performance 
 
-    
+
     var growler = new Vue({
         el: '#growler',
         data: {
             appName: '<a href="./">Growler</a>',
-            
+            results: [
+                {name: 'Ahool Ale', ibu: '33 i.b.u.'}
+            ],
             sectionNameBeers: 'Beers List',
             sectionNameCheckbox: 'Checkbox Binding',
             sectionNameDropdown: 'Dropdown List Binding',
@@ -108,6 +110,24 @@ $(document).ready(function () {
                     this.updateSubTotal()
                 },
                 deep: true
+            }
+        },
+        filters: {
+            convertIBU: function(value, empty) {
+                if(!value) { return empty; }
+                value = value.toString();
+
+                if(this.growler) {
+                    value = this.growler.$options.filters.removePeriods(value);
+                    value = this.growler.$options.filters.toUpperCase(value);
+                }
+                return value;
+            },
+            removePeriods: function(value) {
+                return value.replace(/\./g, '');
+            },
+            toUpperCase: function(value) {
+                return value.toUpperCase();
             }
         },
         methods: {

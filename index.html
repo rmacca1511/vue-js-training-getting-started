@@ -248,6 +248,18 @@
                 <div>
                     Online? {{ isOnline }}
                 </div>
+
+
+                <!-- Filters -->
+
+                <!-- Filter function in js takes string i.b.u. and converts to IBU -->
+                <div v-for="result in results">
+                    <div>{{ result.name }}</div>
+                    <small class="text-muted">
+                        {{ result.ibu | convertIBU('--') | removePeriods | toUpperCase }}
+                    </small>
+                </div>
+
             </div>
         </div>
         <script
