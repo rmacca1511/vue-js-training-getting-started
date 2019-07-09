@@ -1,4 +1,5 @@
 $(document).ready(function () {
+
     var growler = new Vue({
         el: '#growler',
         data: {
@@ -84,6 +85,11 @@ $(document).ready(function () {
             }
         }
     });
+    console.log(Vue.config);
+    Vue.config.keyCodes = {
+        f1: 112
+    };
+
 
 
 });
