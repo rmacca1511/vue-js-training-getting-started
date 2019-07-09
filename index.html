@@ -14,7 +14,8 @@
                 'headers': true,
                 'accent-color': isOnline
             }
-            "></h2>
+            " 
+            v-bind:style="{ color:isOnline? '#FF6A00' : '#000' }"></h2>
             <img 
                 alt="Growler"
                 v-bind:src="appLogo"

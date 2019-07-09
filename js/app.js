@@ -5,7 +5,7 @@ $(document).ready(function () {
             appName: '<a href="./">Growler</a>',
             appLogo: '../img/logo.png',
             accentColor: 'accent-color',
-            isOnline: true,
+            isOnline: false,
             headers: 'headers',
             appStyle: {
                 color: '#FF6A00',
