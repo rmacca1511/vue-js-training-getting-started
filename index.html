@@ -21,6 +21,14 @@
                 v-bind:src="appLogo"
                 style="height:36px;"
             />
+
+            <input v-model="query" placeholder="Search...">
+            <br />
+
+            <div>Searching for: {{ query }}</div> 
+
+            <textarea v-model="emailMessage" name="" id="" cols="30" rows="10"></textarea>
+            
         </div>
         <script
             type="text/javascript"

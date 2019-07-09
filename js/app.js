@@ -11,7 +11,9 @@ $(document).ready(function () {
                 color: '#FF6A00',
                 fontFamily:'Verdana',
                 margin: 0    
-            }
+            },
+            query: '',
+            emailMessage: ''
         }
     });
 });
