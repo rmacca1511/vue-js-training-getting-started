@@ -28,7 +28,20 @@
             <div>Searching for: {{ query }}</div> 
 
             <textarea v-model="emailMessage" name="" id="" cols="30" rows="10"></textarea>
-            
+
+            <input type="checkbox" v-model="isPowerSyntaxEnabled">
+
+            <!-- Checkbox -->
+            <label for="">
+                <input type="checkbox" value="beers" v-model="searchIndexes">
+                Beers
+            </label>
+            <label for="">
+                <input type="checkbox" value="breweries" v-model="searchIndexes">
+                Breweries
+            </label>
+            <small>selected: {{ searchIndexes }}</small>
+
         </div>
         <script
             type="text/javascript"

@@ -13,7 +13,9 @@ $(document).ready(function () {
                 margin: 0    
             },
             query: '',
-            emailMessage: ''
+            emailMessage: '',
+            isPowerSyntaxEnabled: false,
+            searchIndexes: []
         }
     });
 });
