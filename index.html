@@ -22,7 +22,7 @@
                 style="height:36px;"
             />
 
-            <input v-model="query" placeholder="Search...">
+            <input v-model.trim="query" placeholder="Search...">
             <br />
 
             <div>Searching for: {{ query }}</div> 
@@ -74,6 +74,10 @@
             </select>
 
             <small>selected: {{ selectedSearchIndexes }} </small>
+
+            <!-- Number input -->
+
+            <input v-model.number="result" placeholder="2+3=">
 
         </div>
         <script

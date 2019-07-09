@@ -18,7 +18,8 @@ $(document).ready(function () {
             searchIndexes: [],
             searchIndex: 'beers',
             selectedSearchIndex: 'beers',
-            selectedSearchIndexes: ['beers', 'pubs']
+            selectedSearchIndexes: ['beers', 'pubs'],
+            result: 2+3
         }
     });
 });
