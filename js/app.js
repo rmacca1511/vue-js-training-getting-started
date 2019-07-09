@@ -19,8 +19,14 @@ $(document).ready(function () {
             searchIndex: 'beers',
             selectedSearchIndex: 'beers',
             selectedSearchIndexes: ['beers', 'pubs'],
-            result: 2+3
+            result: 2+3,
+        },
+        methods: {
+            executeSearch: function() {
+                alert(this.query);
+            }
         }
     });
+    console.log(growler);
 });
 
