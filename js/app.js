@@ -16,7 +16,9 @@ $(document).ready(function () {
             emailMessage: '',
             isPowerSyntaxEnabled: false,
             searchIndexes: [],
-            searchIndex: 'beers'
+            searchIndex: 'beers',
+            selectedSearchIndex: 'beers',
+            selectedSearchIndexes: ['beers', 'pubs']
         }
     });
 });

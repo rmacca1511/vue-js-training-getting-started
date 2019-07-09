@@ -53,6 +53,28 @@
             </label>
             <small>selected: {{ searchIndex }}</small>
 
+            <!-- Dropdown List -->
+
+            <select v-model="selectedSearchIndex">
+                <option value="beers">Beers</option>
+                <option value="breweries">Breweries</option>
+                <option value="distilleries">Distilleries</option>
+                <option value="pubs">Pubs</option>
+            </select>
+
+            <small>selected: {{ selectedSearchIndex }} </small>
+
+            <!-- Dropdown List Multiple -->
+
+            <select multiple v-model="selectedSearchIndexes">
+                <option value="beers">Beers</option>
+                <option value="breweries">Breweries</option>
+                <option value="distilleries">Distilleries</option>
+                <option value="pubs">Pubs</option>
+            </select>
+
+            <small>selected: {{ selectedSearchIndexes }} </small>
+
         </div>
         <script
             type="text/javascript"
