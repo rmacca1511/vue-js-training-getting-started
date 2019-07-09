@@ -10,7 +10,11 @@
     </head>
     <body>
         <div id="growler">
-            <h2 v-text="appName" v-bind:class="[accentColor, headers]"></h2>
+            <h2 v-text="appName" v-bind:class="{
+                'headers': true,
+                'accent-color': isOnline
+            }
+            "></h2>
             <img 
                 alt="Growler"
                 v-bind:src="appLogo"
