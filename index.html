@@ -21,7 +21,7 @@
                 </div>
 
 
-                <h2 v-html="appName" v-bind:class="{
+                <h2 v-html="appName" v-cloak v-bind:class="{
                     'headers': true,
                     'accent-color': isOnline
                 }
@@ -192,9 +192,21 @@
                 v-on:keyup.ctrl.enter="executeSearchInNewWindow"
                 placeholder="please enter your query here." v-bind:class="inputClasses" />
 
+
+
+                <!-- Conditionally Showing and Hiding Elements -->
+
+                <!-- For Loops -->
+
+                <h3 v-html="sectionNameLoop" v-bind:class="sectionHeader"></h3>
+                <ul>
+                    <li v-for="page in pageCount">
+                        <!-- will loop 5 times, set in data -->
+                        <a href="#" v-on:click="search(page);">{{ page }}</a>
+                    </li>
+                </ul>
+
             </div>
-
-
         </div>
         <script
             type="text/javascript"

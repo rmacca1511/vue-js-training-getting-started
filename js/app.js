@@ -17,6 +17,7 @@ $(document).ready(function () {
             sectionNameTextarea: 'Textarea Binding',
             sectionNameNumber: 'Number Binding',
             sectionNameLazy: 'Lazy Binding',
+            sectionNameLoop: 'Looping a Specific Number of times',
             sectionNameOnce: 'Once Binding',
             sectionNameMouse: 'Mouse Binding',
             sectionNameSpecial: 'Special Keys Binding',
@@ -24,6 +25,7 @@ $(document).ready(function () {
             accentColor: 'accent-color',
             isOnline: false,
             headers: 'headers',
+            pageCount: 5,
             appStyle: {
                 color: '#FF6A00',
                 fontFamily:'Verdana',
