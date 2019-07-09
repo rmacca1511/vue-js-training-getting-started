@@ -1,5 +1,9 @@
 $(document).ready(function () {
 
+
+    // Advantage of computer properties - Caching so good for performance 
+
+    
     var growler = new Vue({
         el: '#growler',
         data: {
