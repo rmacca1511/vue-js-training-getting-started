@@ -25,7 +25,7 @@ $(document).ready(function () {
 
             appLogo: '../img/logo.png',
             accentColor: 'accent-color',
-            isOnline: false,
+            isOnline: window.navigator.onLine,
             headers: 'headers',
             pageCount: 5,
             appStyle: {
@@ -66,7 +66,14 @@ $(document).ready(function () {
                     twitter: '@RyanMackenzie92',
                     youtube: 'RyanMac'
                 }
-            }
+            },
+
+            beers: [
+                'Pope Lick Porter',
+                'Hyote Chocolate Stout',
+                'Ahool Ale',
+                'Tikibalang Barley Wine'
+            ]
         },
         methods: {
             grandparentClick: function() {
@@ -123,13 +130,17 @@ $(document).ready(function () {
                 this.closeContextMenu();
             }
         }
+
     });
+    
+    Vue.set(growler.beers, 2, 'Ahool Pale Ale');
 
     console.log(Vue.config);
 
     Vue.config.keyCodes = {
         f1: 112
     };
+
 
 
 
