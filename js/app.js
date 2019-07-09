@@ -2,9 +2,8 @@ $(document).ready(function () {
     var growler = new Vue({
         el: '#growler',
         data: {
-            appName: 'Growler'
+            appName: '<a href="./">Growler</a>'
         }
     });
-    console.log('running');
 });
 
