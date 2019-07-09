@@ -27,11 +27,17 @@
             <!-- Event Capturing Examples -->
 
             <!-- remember, bubbling up, capturing down, so capture means event in grandparent runs first, top to bottom-->
-            <div v-on:click.capture="grandparentClick">
+            <!-- <div v-on:click.capture="grandparentClick"></div>
                 <div c-on:click.capture="parentClick">
                     <button type="button" v-on:click.capture="executeSearch('token', $event)">Search</button>
                 </div>
-            </div>
+            </div> -->
+
+            <!-- Prevent Modifier (validation for empty query) -->
+            <form action="#" method="GET">
+                <input type="text" v-model="queryPrevent" id="query" name="query" />
+                <button type="submit" v-on:click.prevent="executeSearchPrevent">Search</button>
+            </form>
 
             <br />
 

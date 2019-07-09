@@ -13,6 +13,7 @@ $(document).ready(function () {
                 margin: 0    
             },
             query: '',
+            queryPrevent: '',
             emailMessage: '',
             isPowerSyntaxEnabled: false,
             searchIndexes: [],
@@ -27,9 +28,15 @@ $(document).ready(function () {
                 ' Query: ' + this.query +
                 ' Button: ' + event.target.innerText;
                 alert(msg);
+            },
+            executeSearchPrevent: function() {
+                if (this.queryPrevent) {
+                    document.forms[0].submit();
+                } else {
+                    alert('Please enter a query');
+                }
             }
         }
     });
-    console.log(growler);
 });
 
