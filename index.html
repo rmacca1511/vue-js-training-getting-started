@@ -162,8 +162,8 @@
                 <h3 v-html="sectionNameKeyed" v-bind:class="sectionHeader"></h3>
 
                 <form onkeypress="return event.keyCode != 13;">
-                    <input type="search" v-model="queryKeyed" v-on:keyup="evaluateKey" v-on:keyup.enter="executeSearchKeyed" />
-                    <button type="button" v-on:click.once="executeSearchKeyed">Search</button>
+                    <input type="search" v-model="queryKeyed" v-on:keyup="evaluateKey" v-on:keyup.enter="executeSearchKeyed" v-bind:class="inputClasses" />
+                    <button type="button" v-on:click.once="executeSearchKeyed" v-bind:class="textClasses">Search</button>
                 </form>
                 <div v-bind:class="textClasses">Searching for: {{ queryKeyed }}</div> 
 
@@ -182,6 +182,15 @@
                         <a href="#" v-on:click="onPasteClick">Paste</a>
                     </li>
                 </ul>
+                
+                <!-- Special Keys -->
+                <h3 v-html="sectionNameSpecial" v-bind:class="sectionHeader"></h3>
+
+                <input type="search" 
+                v-model.trim="query" 
+                v-on:keypress.enter.prevent="executeNewSearch" 
+                v-on:keyup.ctrl.enter="executeSearchInNewWindow"
+                placeholder="please enter your query here." v-bind:class="inputClasses" />
 
             </div>
 

@@ -19,7 +19,7 @@ $(document).ready(function () {
             sectionNameLazy: 'Lazy Binding',
             sectionNameOnce: 'Once Binding',
             sectionNameMouse: 'Mouse Binding',
-
+            sectionNameSpecial: 'Special Keys Binding',
             appLogo: '../img/logo.png',
             accentColor: 'accent-color',
             isOnline: false,
