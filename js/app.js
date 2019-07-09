@@ -22,8 +22,11 @@ $(document).ready(function () {
             result: 2+3,
         },
         methods: {
-            executeSearch: function() {
-                alert(this.query);
+            executeSearch: function(t, e) {
+                var msg = 'Token: ' + t +
+                ' Query: ' + this.query +
+                ' Button: ' + event.target.innerText;
+                alert(msg);
             }
         }
     });

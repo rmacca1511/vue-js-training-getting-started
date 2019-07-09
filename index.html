@@ -23,7 +23,7 @@
             />
 
             <input v-model.trim="query" placeholder="Search...">
-            <button type="button" v-on:click="executeSearch">Search</button>
+            <button type="button" v-on:click="executeSearch('token', $event)">Search</button>
             <br />
 
             <div>Searching for: {{ query }}</div> 
