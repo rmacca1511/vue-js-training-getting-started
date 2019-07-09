@@ -23,7 +23,16 @@
             />
 
             <input v-model.trim="query" placeholder="Search...">
-            <button type="button" v-on:click="executeSearch('token', $event)">Search</button>
+
+            <!-- Event Capturing Examples -->
+
+            <!-- remember, bubbling up, capturing down, so capture means event in grandparent runs first, top to bottom-->
+            <div v-on:click.capture="grandparentClick">
+                <div c-on:click.capture="parentClick">
+                    <button type="button" v-on:click.capture="executeSearch('token', $event)">Search</button>
+                </div>
+            </div>
+
             <br />
 
             <div>Searching for: {{ query }}</div> 
