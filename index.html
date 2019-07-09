@@ -27,17 +27,38 @@
             <!-- Event Capturing Examples -->
 
             <!-- remember, bubbling up, capturing down, so capture means event in grandparent runs first, top to bottom-->
-            <!-- <div v-on:click.capture="grandparentClick"></div>
-                <div c-on:click.capture="parentClick">
+            <div v-on:click.capture="grandparentClick"></div>
+                <div v-on:click.capture="parentClick">
                     <button type="button" v-on:click.capture="executeSearch('token', $event)">Search</button>
                 </div>
-            </div> -->
+            </div>
 
             <!-- Prevent Modifier (validation for empty query) -->
             <form action="#" method="GET">
                 <input type="text" v-model="queryPrevent" id="query" name="query" />
                 <button type="submit" v-on:click.prevent="executeSearchPrevent">Search</button>
             </form>
+
+            <!-- Stop Modifier Examples -->
+
+            <!-- remember, bubbling up, so by default click events go from button to grandfather (bottom to top) the stop in parentClick will mean grandparentClick wont fire -->
+            <div v-on:click="grandparentClick"></div>
+                <div v-on:click.stop="parentClick">
+                    <button type="button" v-on:click="executeSearch">Search</button>
+                </div>
+            </div>
+
+
+            <!-- Self Modifier Examples -->
+
+            <!-- Ignores event propogation for simplication -->
+            <!-- So parentClick has self so will not run but firing will continue up the tree -->
+            <div v-on:click="grandparentClick"></div>
+                <div v-on:click.self="parentClick">
+                    <button type="button" v-on:click="executeSearch">Search</button>
+                </div>
+            </div>
+
 
             <br />
 
