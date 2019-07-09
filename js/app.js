@@ -5,6 +5,7 @@ $(document).ready(function () {
         data: {
             appName: '<a href="./">Growler</a>',
             
+            sectionNameBeers: 'Beers List',
             sectionNameCheckbox: 'Checkbox Binding',
             sectionNameDropdown: 'Dropdown List Binding',
             sectionNameEventCapture: 'Event Capture Binding (Top to Bottom)',
@@ -69,13 +70,31 @@ $(document).ready(function () {
             },
 
             beers: [
-                'Pope Lick Porter',
-                'Hyote Chocolate Stout',
-                'Ahool Ale',
-                'Tikibalang Barley Wine'
-            ]
+                {name: 'Pope Lick Porter', price: 2.80},
+                {name: 'Ahool Ale', price: 2.38},
+                {name: 'Hyote Chocolate Stout', price: 2.12},
+                {name: 'Tikibalang Barley Wine', price: 2.54}
+            ],
+            shoppingCart: [],
+            subTotal: 0.00
+        },
+        watch: {
+            shoppingCart: function() {
+                this.updateSubTotal();
+            }
         },
         methods: {
+            updateSubTotal: function() {
+                var s = this.shoppingCart.length;
+                var t = 0;
+                for (var i=0; i<s; i++) {
+                    t += this.shoppingCart[i].price;
+                }
+                this.subTotal = t;
+            },
+            buy: function(beer) {
+                this.shoppingCart.push(beer);
+            },
             grandparentClick: function() {
                 alert('Grandparent');
             },
@@ -134,8 +153,6 @@ $(document).ready(function () {
     });
     
     Vue.set(growler.beers, 2, 'Ahool Pale Ale');
-
-    console.log(Vue.config);
 
     Vue.config.keyCodes = {
         f1: 112
