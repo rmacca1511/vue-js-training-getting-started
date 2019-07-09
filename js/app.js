@@ -4,6 +4,8 @@ $(document).ready(function () {
         data: {
             appName: '<a href="./">Growler</a>',
             appLogo: '../img/logo.png',
+            accentColor: 'accent-color',
+            headers: 'headers',
             appStyle: {
                 color: '#FF6A00',
                 fontFamily:'Verdana',

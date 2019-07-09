@@ -2,12 +2,15 @@
 <html>
     <head>
         <title>Growler</title>
+
+        <link rel="stylesheet" type="text/css" href="./css/style.css">
+
         <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
         <script type="text/javascript" src="js/app.js"></script>
     </head>
     <body>
         <div id="growler">
-            <h2 v-text="appName" v-bind:style="appStyle"></h2>
+            <h2 v-text="appName" v-bind:class="[accentColor, headers]"></h2>
             <img 
                 alt="Growler"
                 v-bind:src="appLogo"
